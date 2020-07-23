@@ -1,0 +1,125 @@
+[demo-native:19]    classlist:  16,463.21 ms,  2.10 GB
+[demo-native:19]        (cap):   1,141.63 ms,  2.10 GB
+[demo-native:19]        setup:   4,369.27 ms,  2.10 GB
+[demo-native:19]     (clinit):   2,008.28 ms,  2.44 GB
+[demo-native:19]   (typeflow): 110,644.80 ms,  2.44 GB
+[demo-native:19]    (objects):  61,617.81 ms,  2.44 GB
+[demo-native:19]   (features):   7,533.41 ms,  2.44 GB
+[demo-native:19]     analysis: 187,481.73 ms,  2.44 GB
+Warning: Aborting stand-alone image build. com.oracle.svm.hosted.substitute.DeletedElementException: Unsupported method java.lang.ClassLoader.defineClass1(String, byte[], int, int, ProtectionDomain, String) is reachable
+To diagnose the issue, you can add the option --report-unsupported-elements-at-runtime. The unsupported element is then reported at run time when it is accessed the first time.
+Detailed message:
+Trace:
+	at parsing java.lang.ClassLoader.defineClass(ClassLoader.java:756)
+Call path from entry point to java.lang.ClassLoader.defineClass(String, byte[], int, int, ProtectionDomain):
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:754)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:635)
+	at com.oracle.svm.reflect.ClassLoader_defineClass_c6c343b4d6dc22ca64eb2d8503b13ac9c340dcb3_2495.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at software.amazon.awssdk.http.apache.internal.conn.ClientConnectionManagerFactory$Handler.invoke(ClientConnectionManagerFactory.java:80)
+	at com.sun.proxy.$Proxy210.hashCode(Unknown Source)
+	at java.util.HashMap.hash(HashMap.java:339)
+	at java.util.HashMap.get(HashMap.java:557)
+	at com.oracle.svm.core.jdk.Target_java_nio_charset_Charset.lookup(CharsetSubstitutions.java:74)
+	at java.nio.charset.Charset.isSupported(Charset.java:505)
+	at com.oracle.svm.jni.JNIJavaCallWrappers.jniInvoke_ARRAY:Ljava_nio_charset_Charset_2_0002eisSupported_00028Ljava_lang_String_2_00029Z(generated:0)
+
+com.oracle.svm.hosted.FallbackFeature$FallbackImageRequest: Aborting stand-alone image build. com.oracle.svm.hosted.substitute.DeletedElementException: Unsupported method java.lang.ClassLoader.defineClass1(String, byte[], int, int, ProtectionDomain, String) is reachable
+To diagnose the issue, you can add the option --report-unsupported-elements-at-runtime. The unsupported element is then reported at run time when it is accessed the first time.
+Detailed message:
+Trace:
+	at parsing java.lang.ClassLoader.defineClass(ClassLoader.java:756)
+Call path from entry point to java.lang.ClassLoader.defineClass(String, byte[], int, int, ProtectionDomain):
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:754)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:635)
+	at com.oracle.svm.reflect.ClassLoader_defineClass_c6c343b4d6dc22ca64eb2d8503b13ac9c340dcb3_2495.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at software.amazon.awssdk.http.apache.internal.conn.ClientConnectionManagerFactory$Handler.invoke(ClientConnectionManagerFactory.java:80)
+	at com.sun.proxy.$Proxy210.hashCode(Unknown Source)
+	at java.util.HashMap.hash(HashMap.java:339)
+	at java.util.HashMap.get(HashMap.java:557)
+	at com.oracle.svm.core.jdk.Target_java_nio_charset_Charset.lookup(CharsetSubstitutions.java:74)
+	at java.nio.charset.Charset.isSupported(Charset.java:505)
+	at com.oracle.svm.jni.JNIJavaCallWrappers.jniInvoke_ARRAY:Ljava_nio_charset_Charset_2_0002eisSupported_00028Ljava_lang_String_2_00029Z(generated:0)
+
+	at com.oracle.svm.hosted.FallbackFeature.reportFallback(FallbackFeature.java:209)
+	at com.oracle.svm.hosted.FallbackFeature.reportAsFallback(FallbackFeature.java:219)
+	at com.oracle.svm.hosted.NativeImageGenerator.runPointsToAnalysis(NativeImageGenerator.java:753)
+	at com.oracle.svm.hosted.NativeImageGenerator.doRun(NativeImageGenerator.java:538)
+	at com.oracle.svm.hosted.NativeImageGenerator.lambda$run$0(NativeImageGenerator.java:451)
+	at java.util.concurrent.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1386)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.oracle.graal.pointsto.constraints.UnsupportedFeatureException: com.oracle.svm.hosted.substitute.DeletedElementException: Unsupported method java.lang.ClassLoader.defineClass1(String, byte[], int, int, ProtectionDomain, String) is reachable
+To diagnose the issue, you can add the option --report-unsupported-elements-at-runtime. The unsupported element is then reported at run time when it is accessed the first time.
+Detailed message:
+Trace:
+	at parsing java.lang.ClassLoader.defineClass(ClassLoader.java:756)
+Call path from entry point to java.lang.ClassLoader.defineClass(String, byte[], int, int, ProtectionDomain):
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:754)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:635)
+	at com.oracle.svm.reflect.ClassLoader_defineClass_c6c343b4d6dc22ca64eb2d8503b13ac9c340dcb3_2495.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at software.amazon.awssdk.http.apache.internal.conn.ClientConnectionManagerFactory$Handler.invoke(ClientConnectionManagerFactory.java:80)
+	at com.sun.proxy.$Proxy210.hashCode(Unknown Source)
+	at java.util.HashMap.hash(HashMap.java:339)
+	at java.util.HashMap.get(HashMap.java:557)
+	at com.oracle.svm.core.jdk.Target_java_nio_charset_Charset.lookup(CharsetSubstitutions.java:74)
+	at java.nio.charset.Charset.isSupported(Charset.java:505)
+	at com.oracle.svm.jni.JNIJavaCallWrappers.jniInvoke_ARRAY:Ljava_nio_charset_Charset_2_0002eisSupported_00028Ljava_lang_String_2_00029Z(generated:0)
+
+	at com.oracle.graal.pointsto.constraints.UnsupportedFeatures.report(UnsupportedFeatures.java:126)
+	at com.oracle.svm.hosted.NativeImageGenerator.runPointsToAnalysis(NativeImageGenerator.java:750)
+	... 7 more
+Caused by: com.oracle.svm.hosted.substitute.DeletedElementException: Unsupported method java.lang.ClassLoader.defineClass1(String, byte[], int, int, ProtectionDomain, String) is reachable
+To diagnose the issue, you can add the option --report-unsupported-elements-at-runtime. The unsupported element is then reported at run time when it is accessed the first time.
+	at com.oracle.svm.hosted.substitute.AnnotationSubstitutionProcessor.lookup(AnnotationSubstitutionProcessor.java:183)
+	at com.oracle.graal.pointsto.infrastructure.SubstitutionProcessor$ChainedSubstitutionProcessor.lookup(SubstitutionProcessor.java:128)
+	at com.oracle.graal.pointsto.infrastructure.SubstitutionProcessor$ChainedSubstitutionProcessor.lookup(SubstitutionProcessor.java:128)
+	at com.oracle.graal.pointsto.meta.AnalysisUniverse.lookupAllowUnresolved(AnalysisUniverse.java:397)
+	at com.oracle.graal.pointsto.infrastructure.WrappedConstantPool.lookupMethod(WrappedConstantPool.java:116)
+	at org.graalvm.compiler.java.BytecodeParser.lookupMethodInPool(BytecodeParser.java:4323)
+	at com.oracle.svm.hosted.phases.SharedGraphBuilderPhase$SharedBytecodeParser.lookupMethodInPool(SharedGraphBuilderPhase.java:107)
+	at org.graalvm.compiler.java.BytecodeParser.lookupMethod(BytecodeParser.java:4317)
+	at org.graalvm.compiler.java.BytecodeParser.genInvokeSpecial(BytecodeParser.java:1800)
+	at org.graalvm.compiler.java.BytecodeParser.processBytecode(BytecodeParser.java:5339)
+	at org.graalvm.compiler.java.BytecodeParser.iterateBytecodesForBlock(BytecodeParser.java:3423)
+	at org.graalvm.compiler.java.BytecodeParser.processBlock(BytecodeParser.java:3230)
+	at org.graalvm.compiler.java.BytecodeParser.build(BytecodeParser.java:1088)
+	at org.graalvm.compiler.java.BytecodeParser.buildRootMethod(BytecodeParser.java:982)
+	at org.graalvm.compiler.java.GraphBuilderPhase$Instance.run(GraphBuilderPhase.java:84)
+	at org.graalvm.compiler.phases.Phase.run(Phase.java:49)
+	at org.graalvm.compiler.phases.BasePhase.apply(BasePhase.java:214)
+	at org.graalvm.compiler.phases.Phase.apply(Phase.java:42)
+	at org.graalvm.compiler.phases.Phase.apply(Phase.java:38)
+	at com.oracle.graal.pointsto.flow.MethodTypeFlowBuilder.parse(MethodTypeFlowBuilder.java:225)
+	at com.oracle.graal.pointsto.flow.MethodTypeFlowBuilder.apply(MethodTypeFlowBuilder.java:352)
+	at com.oracle.graal.pointsto.flow.MethodTypeFlow.doParse(MethodTypeFlow.java:322)
+	at com.oracle.graal.pointsto.flow.MethodTypeFlow.ensureParsed(MethodTypeFlow.java:311)
+	at com.oracle.graal.pointsto.flow.MethodTypeFlow.addContext(MethodTypeFlow.java:112)
+	at com.oracle.graal.pointsto.DefaultAnalysisPolicy$DefaultSpecialInvokeTypeFlow.onObservedUpdate(DefaultAnalysisPolicy.java:373)
+	at com.oracle.graal.pointsto.flow.TypeFlow.notifyObservers(TypeFlow.java:470)
+	at com.oracle.graal.pointsto.flow.TypeFlow.update(TypeFlow.java:542)
+	at com.oracle.graal.pointsto.BigBang$2.run(BigBang.java:530)
+	at com.oracle.graal.pointsto.util.CompletionExecutor.lambda$execute$0(CompletionExecutor.java:173)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	... 4 more
+[demo-native:82]    classlist:   6,195.60 ms,  1.11 GB
+[demo-native:82]        (cap):   1,570.01 ms,  1.11 GB
+[demo-native:82]        setup:   5,351.17 ms,  1.11 GB
+[demo-native:82]     (clinit):     327.25 ms,  1.54 GB
+[demo-native:82]   (typeflow):   9,053.85 ms,  1.54 GB
+[demo-native:82]    (objects):   4,808.16 ms,  1.54 GB
+[demo-native:82]   (features):     231.43 ms,  1.54 GB
+[demo-native:82]     analysis:  14,685.97 ms,  1.54 GB
+[demo-native:82]     universe:     776.19 ms,  1.59 GB
+[demo-native:82]      (parse):   4,061.88 ms,  1.59 GB
+[demo-native:82]     (inline):   2,560.34 ms,  1.60 GB
+[demo-native:82]    (compile):  19,104.49 ms,  1.86 GB
+[demo-native:82]      compile:  26,419.11 ms,  1.86 GB
+[demo-native:82]        image:   1,338.98 ms,  1.87 GB
+[demo-native:82]        write:     240.32 ms,  1.87 GB
+[demo-native:82]      [total]:  55,704.90 ms,  1.87 GB
+Warning: Image 'demo-native' is a fallback image that requires a JDK for execution (use --no-fallback to suppress fallback image generation and to print more detailed information why a fallback image was necessary).
