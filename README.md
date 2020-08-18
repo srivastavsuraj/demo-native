@@ -8,3 +8,7 @@
 
 - [Micronaut AWS Lambda Function documentation](https://micronaut-projects.github.io/micronaut-aws/latest/guide/index.html#lambda)
 
+## Create deployeble native image
+Run ```./deploy.sh```
+It will create a function.zip in the ```build``` folder
+
