@@ -1,7 +1,7 @@
 FROM gradle:6.3.0-jdk8 as builder
 COPY --chown=gradle:gradle . /home/application
 WORKDIR /home/application
-RUN ./gradlew build --no-daemon
+RUN ./gradlew clean build --no-daemon
 FROM amazonlinux:2018.03.0.20191014.0 as graalvm
 
 ENV LANG=en_US.UTF-8
@@ -24,7 +24,7 @@ FROM graalvm
 COPY --from=builder /home/application/ /home/application/
 WORKDIR /home/application
 RUN /usr/lib/graalvm/bin/gu install native-image
-RUN /usr/lib/graalvm/bin/native-image --no-server -cp build/libs/demo-native-*-all.jar
+RUN /usr/lib/graalvm/bin/native-image --no-server --report-unsupported-elements-at-runtime -cp build/libs/demo-native-*-all.jar
 RUN chmod 777 bootstrap
 RUN chmod 777 demo-native
 RUN zip -j function.zip bootstrap demo-native

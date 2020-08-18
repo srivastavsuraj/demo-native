@@ -27,7 +27,7 @@ public class BookController {
         items.put("id", AttributeValue.builder().s(bookSaved.getIsbn()).build());
         items.put("name", AttributeValue.builder().s(bookSaved.getName()).build());
         dynamoDbClient.putItem(PutItemRequest.builder()
-                .tableName("SUraj-Test-Greetings-Table")
+                .tableName("LoadTest-GraalVM-Trip-Table")
                 .item(items)
                 .build());
         return bookSaved;
