@@ -25,6 +25,6 @@ Resources:
 Outputs:
   MicronautNativeServiceApi:
     Description: URL for application
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/pets'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/books'
     Export:
       Name: MicronautNativeServiceApi

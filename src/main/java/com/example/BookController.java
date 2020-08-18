@@ -20,6 +20,7 @@ public class BookController {
 
     @Post("/books")
     public BookSaved save(@Valid @Body Book book) {
+        String tableName = "LoadTest-GraalVM-Trip-Table";//Your table name
         BookSaved bookSaved = new BookSaved();
         bookSaved.setName(book.getName());
         bookSaved.setIsbn(UUID.randomUUID().toString());
@@ -27,7 +28,7 @@ public class BookController {
         items.put("id", AttributeValue.builder().s(bookSaved.getIsbn()).build());
         items.put("name", AttributeValue.builder().s(bookSaved.getName()).build());
         dynamoDbClient.putItem(PutItemRequest.builder()
-                .tableName("LoadTest-GraalVM-Trip-Table")
+                .tableName(tableName)
                 .item(items)
                 .build());
         return bookSaved;
